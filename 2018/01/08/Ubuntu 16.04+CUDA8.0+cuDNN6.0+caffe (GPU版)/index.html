@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>new article | Aiqixiang</title>
+  <title>安装 caffe(GPU版) | Aiqixiang</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -182,14 +182,11 @@
     
     
 </span>
-                <h1>new article</h1>
+                <h1>安装 caffe(GPU版)</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="Ubuntu-16-04-CUDA8-0-cuDNN6-0-caffe-GPU版"><a href="#Ubuntu-16-04-CUDA8-0-cuDNN6-0-caffe-GPU版" class="headerlink" title="Ubuntu 16.04+CUDA8.0+cuDNN6.0+caffe (GPU版)"></a>Ubuntu 16.04+CUDA8.0+cuDNN6.0+caffe (GPU版)</h1><p>标签（空格分隔）： ubuntu caffe python</p>
-<hr>
-<p>[TOC]</p>
-<p>之前安装过一次caffe，这次重新安装没想到又遇到很多问题，之前想写一下安装教程的，当时因为考虑到网上的教程已经有很多了，就没有着手去写。但是从这次的安装情况来看，还是需要认真记录一下安装的过程，以免下一次犯同样的错误，也是为了加深点自己的印象，同时也能作为别人的参考教程。</p>
+      		<h3 id="Ubuntu-16-04-CUDA8-0-cuDNN6-0-caffe"><a href="#Ubuntu-16-04-CUDA8-0-cuDNN6-0-caffe" class="headerlink" title="Ubuntu 16.04+CUDA8.0+cuDNN6.0+caffe"></a>Ubuntu 16.04+CUDA8.0+cuDNN6.0+caffe</h3><p>之前安装过一次caffe，这次重新安装没想到又遇到很多问题，之前想写一下安装教程的，当时因为考虑到网上的教程已经有很多了，就没有着手去写。但是从这次的安装情况来看，还是需要认真记录一下安装的过程，以免下一次犯同样的错误，也是为了加深点自己的印象，同时也能作为别人的参考教程。</p>
 <p>软件链接: <a href="https://pan.baidu.com/s/1eSgtXeE" target="_blank" rel="noopener">https://pan.baidu.com/s/1eSgtXeE</a> 密码: cmhy</p>
 <p>###<strong>第一步是安装Ubuntu系统</strong><br>安装系统我也看过许多的教程，其中不变的就是系统分区问题，因为大多数人都是安装双系统，或者是虚拟机上安转，但是有一点意见就是尽量安装LTS的版本，也就是偶数开头的（如 Ubuntu 16.04）。至于怎么安转就不在这里赘述。</p>
 <p>###<strong>第二步是安装NVIDIA显卡</strong><br>首先必须是NVIDIA的显卡才可以GPU加速计算，先去NVIDIA官网上（<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us）[图一][1" target="_blank" rel="noopener">http://www.nvidia.com/Download/index.aspx?lang=en-us）[图一][1</a>] 查询一下你显卡型号所需要的驱动，例如我的是<strong>GTX780Ti</strong>，需要的驱动是<strong>384.90</strong><a href="http://www.cnblogs.com/upuil/p/7749490.html" target="_blank" rel="noopener">图二</a><br>然后去<code>设置-&gt;软件与更新</code> 先把第一项中 <code>Download from</code>选择一个国内的下载源，<code>aliyun</code>，<code>cn99</code>都可以，然后在<code>附加驱动</code> 这里换成你的驱动型号，然后<code>apply changes</code> 完成之后重新启动，或者<code>log out</code>在命令行中输入<code>nvidia-smi</code>如果有GPU清单，则显卡安装成功。<a href="http://www.cnblogs.com/upuil/p/7749490.html" target="_blank" rel="noopener">图三</a><br>如果这里没有与你相同的选项，那只能通过刚才的网址（<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us）那下载驱动，然后安装，如果选一个不支持的驱动的可能出现循环登录的问题。" target="_blank" rel="noopener">http://www.nvidia.com/Download/index.aspx?lang=en-us）那下载驱动，然后安装，如果选一个不支持的驱动的可能出现循环登录的问题。</a><br>如果有驱动选项的可以跳过安装驱动的部分，进入下一步。<br>驱动安装有两种方法</p>
@@ -225,8 +222,7 @@
 <li>需要将编译好的<code>caffe</code>写入到环境变量中，执行如下命令<br><code>vi ~/.bashrc</code><br>在末尾加入<br><code>export PYTHONPATH=/home/到caffe根目录的路径/caffe-segnet-cudnn5-maste/python:$PYTHONPATH</code><br>退出保存<br>在命令行中输入<br><code>python</code><br><code>import caffe</code><br>如果没有报错则安装正确。</li>
 </ol>
 <p>###<strong>参考链接</strong><br><a href="http://blog.csdn.net/sinat_14916279/article/details/53844963" target="_blank" rel="noopener">http://blog.csdn.net/sinat_14916279/article/details/53844963</a><br><a href="http://blog.csdn.net/autocyz/article/details/52299889#insertcode" target="_blank" rel="noopener">http://blog.csdn.net/autocyz/article/details/52299889#insertcode</a><br><a href="http://www.mobibrw.com/2017/7285" target="_blank" rel="noopener">http://www.mobibrw.com/2017/7285</a></p>
-<p>###<strong>安装错误总结</strong><br><a href="/usr/lib/x86_64-linux-gnu/libopencv_highgui.so.2.4.9:%20undefined%20reference%20toTIFFIsTiled@LIBTIFF_4.0%27">此处输入链接的描述</a></p>
-<p><a href="http://www.cnblogs.com/whu-zeng/p/6874307.html" target="_blank" rel="noopener">此处输入链接的描述</a></p>
+<p>###<strong>安装错误总结</strong><br>待续</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
